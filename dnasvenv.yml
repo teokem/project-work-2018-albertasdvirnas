@@ -1,0 +1,10 @@
+name: dnasvenv
+channels:
+  - defaults
+dependencies:
+  - numpy
+  - python=3.6
+  - pandas
+  - matplotlib=2.1
+  - biopython
+

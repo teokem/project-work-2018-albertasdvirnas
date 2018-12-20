@@ -1,0 +1,42 @@
+Name of person who did experiment:			Ville
+
+Date:									15-06-03 / 15-06-09
+Info about isolate (strain etc):				xxx	
+CC cut of value (if used):					All kymos included
+
+Experiments from glass or nanochannels:		Nanochannels
+Cas9 added yes/no:						No
+nm/bp value from lambda:				0.256 (160603) / 0.278 (160609)
+
+Final YOYO konc:						0.04 uM
+Final Netropsin konc:						6 uM
+Final DNA konc plasmid:					0.1 uM
+Final DNA konc lambda:					0.1 uM
+Final DNA konc (other than above):			No
+Final buffer concentration:				0.05xTBE
+BME concertation (v/v):					xxx v/v
+
+Buffer conc (equilibration phase):			5xTBE
+Temperature during equilibration phase:		xxx C
+
+Which microscope was used:					Jens
+Which lamp:							xxx
+Which camera (incl pixel size):				Photometrix Evolve 0.1592 um
+Which objective:						100x
+	
+Exposure time:							100 ms
+Frame rate:							xxx ms
+Camera Gain:							xxx
+ND filter:								xxx
+Microscope software:						xxx
+
+Driving gas:							Nitrogen
+
+Nanochannel length:						500 um
+Nanochannel width:						150 nm
+Nanochannel height:						100 nm
+
+Chip material:							xxx
+Chip number:   							xxx  	                                           
+
+Other Info: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
