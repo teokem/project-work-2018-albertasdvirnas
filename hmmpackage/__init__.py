@@ -90,7 +90,7 @@ def cb_transfer_matrix_method(ntSeq, NETROPSINconc = 6E-6,YOYO1conc = 4E-8,yoyo1
         probBinding = probBinding[untrustedRegion:len(probBinding)-untrustedRegion];
 
     print time.time() - t
-    print probBinding
+#     print probBinding
     return probBinding
 
 
@@ -203,7 +203,7 @@ def seq_to_timeseries(seq, barLen, kerLen ):
 
     conVec = np.conj(np.fft.fft(ker, barLen))
 
-    return np.real(np.fft.ifft(np.fft.fft(seq) * conVec)) / (barLen - 1)
+    return np.real(np.fft.ifft(np.fft.fft(seq) * conVec)) #/ (barLen - 1)
 
            
 def compute_pcc_one(vec1,vec2):
@@ -521,27 +521,6 @@ def msv_traceback(p1_profile, sequence, W, score, M, L):
     return vitTraceback
 
 
-def plot_traceback(vitTraceback, W, M, L):
-    index_a, index_b = zip(*vitTraceback)
-
-    f1, axarr = plt.subplots(1, 1)
-    img = axarr.imshow(W, origin='upper', interpolation='none')
-    plt.colorbar(img, ax=axarr)  # C = M+5
-    plt.plot(index_b, index_a, 'ro-')
-
-    # https://matplotlib.org/gallery/images_contours_and_fields/image_annotated_heatmap.html
-    vText = ['N', 'B', 'E', 'J', 'C']
-    # We want to show all ticks...
-    axarr.set_xticks(np.arange(2 * M + 6))
-    axarr.set_yticks(np.arange(L + 1))
-
-    textX = [str(i) for i in np.arange(2 * M + 1)]
-    for i in vText:
-        textX.append(i)
-
-    # ... and label them with the respective list entries
-    axarr.set_xticklabels(textX)
-
 
 def compute_example(bar, bar2):
     z_barcode = st.zscore(bar, axis=1, ddof=0)
@@ -557,7 +536,7 @@ def compute_example(bar, bar2):
     L = len(discrete_barcode2[0])
     # sequence = discrete_barcode2
     vitTraceback = msv_traceback(p1_profile, discrete_barcode2, W, score, M, L)
-    # plot_traceback(vitTraceback, W, M, L)
+#     plot_traceback(vitTraceback, W, M, L)
     return vitTraceback, W, score
 
 
@@ -585,54 +564,7 @@ def parse_vtrace(vitTraceback, M):
     return resTable
 
 
-def plot_comparison(bar,bar2, resTable ):
 
-    bar = st.zscore(bar[0])
-    bar2 = st.zscore(bar2[0])
-    ylmax = max(bar)
-    ylmin = min(bar)
-    yumax = max(bar2 + 10)
-    yumin = min(bar2 + 10)
-    import matplotlib.pyplot as plt
-    cmap = plt.get_cmap('jet')
-    colors = cmap(np.linspace(0, 1.0, len(resTable)))
-
-    plt.figure()
-    plt.plot(np.linspace(1,len(bar),len(bar)), bar,'black')
-
-    plt.plot(np.linspace(1,len(bar2),len(bar2)), bar2 + 10,'black')
-    for j in range(0,len(resTable)):
-
-        for i in range(0,len(resTable[j][0])):
-            plt.plot([resTable[j][0][i],resTable[j][0][i]],[13,7],color = colors[j],alpha=0.2)
-            plt.plot([resTable[j][1][i],resTable[j][1][i]],[3,-3],color = colors[j],alpha=0.2)
-            plt.plot([resTable[j][0][i],resTable[j][1][i]],[7,3],color = colors[j],alpha=0.2)
-
-    # plt.plot(np.array(resTable[0][1]),[-3]*len(resTable[0][1]))
-    plt.xlabel('Distance along barcodes (px)')
-    plt.yticks([0,10], ('Barcode 1','Barcode 2'))
-    # plt.figure()
-    # plt.plot(bar)
-    # plt.plot(bar2 + 8)
-    # plt.plot(np.array(resTable[0][0])-1,[11]*len(resTable[0][0]))
-    # plt.plot(np.array(resTable[0][1])-1,[-3]*len(resTable[0][1]))
-
-#
-# def parse_vtrace(vitTraceback, M):
-#     resTable = []
-#     curVec = []
-#     for i in range(0, len(vitTraceback)):
-#         if vitTraceback[i, 1] == 2 * M + 2:
-#             if curVec != []:
-#                 resTable.append([curVec[-1][0], curVec[0][0], curVec[-1][1], curVec[0][1]])
-#                 curVec = []
-#
-#         if vitTraceback[i, 1] < 2 * M + 1:
-#             curVec.append(vitTraceback[i, :])
-#
-#     return resTable
-
-# def viterbi_direct_score(seq1, seq2):
 
 
 def vit_to_table(seq1,seq2):
