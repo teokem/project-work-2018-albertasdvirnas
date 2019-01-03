@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/163852353.svg)](https://zenodo.org/badge/latestdoi/163852353)
+
 # Structural variations in optical DNA maps
 ## Project for Reproducible and Interactive Data Science course
 
