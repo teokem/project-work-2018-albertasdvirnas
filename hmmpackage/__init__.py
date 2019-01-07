@@ -5,14 +5,12 @@ import scipy.ndimage.filters as fi
 import scipy.stats as st
 import matplotlib.pyplot as plt
 import os
-import time
 from math import floor
 from math import exp
 
 
 
 def cb_transfer_matrix_method(ntSeq, NETROPSINconc = 6E-6,YOYO1conc = 4E-8,yoyo1BindingConstant = 1E10,    netropsinBindingConstant = np.array([5E5,1E8]), untrustedRegion = 1000):
-    t = time.time()
 
     #from cb import DnaUtil
     Dna = DnaUtil()
@@ -89,8 +87,6 @@ def cb_transfer_matrix_method(ntSeq, NETROPSINconc = 6E-6,YOYO1conc = 4E-8,yoyo1
     if untrustedRegion > 0:
         probBinding = probBinding[untrustedRegion:len(probBinding)-untrustedRegion];
 
-    print time.time() - t
-#     print probBinding
     return probBinding
 
 
